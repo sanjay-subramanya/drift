@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"drift/internal/core/model"
+	"github.com/sanjay-subramanya/drift/internal/core/model"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -9,14 +9,14 @@ import (
 	"strings"
 )
 
-func WriteJSON(path string, findings []model.Finding) error {
+func WriteJSON(path, base string, findings []model.Finding) error {
 	type JSONDetail struct {
 		Message string `json:"Message"`
 	}
 
 	type JSONDrift struct {
 		Drift struct {
-			Type    string `json:"Type"`
+			Base    string `json:"Base"`
 			Summary string `json:"Summary"`
 		} `json:"Drift"`
 		Breakdown map[string]JSONDetail `json:"Breakdown,omitempty"`
@@ -29,7 +29,7 @@ func WriteJSON(path string, findings []model.Finding) error {
 			Breakdown: make(map[string]JSONDetail),
 		}
 
-		j.Drift.Type = string(f.Drift.Type)
+		j.Drift.Base = base
 
 		lines := strings.Split(f.Drift.Summary, "\n")
 		if len(lines) > 0 {
@@ -69,6 +69,6 @@ func WriteJSON(path string, findings []model.Finding) error {
 			return err
 		}
 	}
-	fmt.Println("Output written to", path)
+	fmt.Println("json output recorded to", path)
 	return os.WriteFile(path, data, 0644)
 }

@@ -1,6 +1,6 @@
 package rules
 
-import "drift/internal/core/model"
+import "github.com/sanjay-subramanya/drift/internal/core/model"
 
 type Rule interface {
 	Evaluate (ctx model.Context) ([]model.Finding, error)

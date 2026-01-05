@@ -1,6 +1,7 @@
 package config
 
 import (
+	"slices"
 	"os"
 	"strings"
 )
@@ -24,10 +25,5 @@ func LoadIgnoreFile() []string {
 }
 
 func IsIgnored(path string, ignores []string) bool {
-	for _, ig := range ignores {
-		if ig == path {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(ignores, path)
 }

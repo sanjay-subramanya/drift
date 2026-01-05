@@ -14,7 +14,6 @@ func CommitsBehind(local, remote string) (int, error) {
 	if err != nil {
 		return 0, err
 	}
-	// return strconv.Atoi(strings.TrimSpace(string(out)))
 	return strconv.Atoi(out)
 }
 

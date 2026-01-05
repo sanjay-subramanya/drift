@@ -1,6 +1,6 @@
 package workspace
 
-import "drift/internal/git"
+import "github.com/sanjay-subramanya/drift/internal/git"
 
 type Snapshot struct {
 	Branch string

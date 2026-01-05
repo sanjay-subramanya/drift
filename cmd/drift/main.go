@@ -1,9 +1,9 @@
 package main
 
 import (
-	"drift/internal/core/engine"
-	"drift/internal/core/model"
-	"drift/internal/utils"
+	"github.com/sanjay-subramanya/drift/internal/core/engine"
+	"github.com/sanjay-subramanya/drift/internal/core/model"
+	"github.com/sanjay-subramanya/drift/internal/utils"
 	"flag"
 	"fmt"
 	"os"
@@ -43,7 +43,7 @@ func main() {
 		return
 	}
 	if jsonOut {
-		if err := utils.WriteJSON(jsonPath, findings); err != nil {
+		if err := utils.WriteJSON(jsonPath, base, findings); err != nil {
 			fmt.Println("Failed to write JSON:", err)
 			os.Exit(1)
 		}

@@ -1,6 +1,9 @@
 package workspace
 
-import "path"
+import (
+	"path"
+	"strings"
+)
 
 func IsEnvFile(filename string) bool {
 	if filename == ".env" {
@@ -10,7 +13,7 @@ func IsEnvFile(filename string) bool {
 }
 
 func IsDeploymentFile(filename string) bool {
-	if filename == "Dockerfile" {
+	if strings.ToLower(filename) == "dockerfile" {
 		return true
 	}
 	if len(filename) >= 10 && filename[:10] == "Dockerfile" {
