@@ -41,11 +41,11 @@ func AnalyzeBranch(base string) ([]model.Drift, error) {
 		return nil, err
 	}
 
-	localFilesOut, err := git.RunGit("ls-files")
+	// localFilesOut, err := git.RunGit("ls-files")
 	if err != nil {
 		return nil, err
 	}
-	localTracked := strings.Split(localFilesOut, "\n")
+	// localTracked := strings.Split(localFilesOut, "\n")
 
 	ignores := config.LoadIgnoreFile()
 
@@ -62,8 +62,8 @@ func AnalyzeBranch(base string) ([]model.Drift, error) {
 		}
 
 		switch {
-		// file exists locally (dirty or clean)
-		case slices.Contains(localTracked, f):
+		// file exists locally (dirty)
+		case slices.Contains(localDirty, f):
 			critical = append(critical, f)
 
 		// env / docker / deployment files
