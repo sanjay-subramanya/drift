@@ -77,8 +77,7 @@ Once installed, you can use Drift in any Git repository. Simply navigate to your
 drift
 ```
 Drift will analyze the current branch with respect to the remote branch (default: `origin/main`) and report any detected code drift. If there are any conflicts, it will flag them with severity levels.
-
-if you want to analyze a different branch, you can use the `--base` flag:
+If you want to analyze a different branch, you can use the `--base` flag:
 
 ```bash
 drift --base branch_name
